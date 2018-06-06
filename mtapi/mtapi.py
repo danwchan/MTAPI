@@ -7,6 +7,7 @@ import logging
 import google.protobuf.message
 from mtaproto.feedresponse import FeedResponse, Trip, TripStop, TZ
 from _mtapithreader import _MtapiThreader
+import pdb
 
 logger = logging.getLogger(__name__)
 
@@ -229,6 +230,7 @@ class Mtapi(object):
         ids = ['65cd','66ce','7da0','ce5b']
         with self._read_lock:
             out = [ self._stations[k].serialize() for k in ids ]
+            pdb.set_trace()
 
         return out
 
