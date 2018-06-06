@@ -118,6 +118,16 @@ def by_index(id_string):
     except KeyError as e:
         abort(404)
 
+#entry for the custom function
+@app.route('/custom', methods=['GET'])
+@cross_origin
+def custom():
+    try:
+        data = mta.get_custom()
+        return _make_envelope(data)
+    except KeyError as e:
+        abort(404)
+
 @app.route('/routes', methods=['GET'])
 @cross_origin
 def routes():

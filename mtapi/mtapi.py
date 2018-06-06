@@ -216,6 +216,21 @@ class Mtapi(object):
 
         return out
 
+    '''
+    custom function to get the next 2 trains in each direction sorted by time of arrival from:
+    Court Square {65cd}, Queensboro Plaza {66ce}, Queens Plaza {ce5b}, Queensbridge {7da0}
+    (only trains <10min away) for non-Court Square stations
+    '''
+    def get_custom(self):
+        if self.is_expired():
+            self._update()
+
+        ids = ['65cd','66ce','7da0','ce5b']
+        with self._read_lock:
+            out = [ self._stations[k].serialize() for k in ids ]
+
+        return out
+
     def is_expired(self):
         if self._THREADED and self.threader and self.threader.restart_if_dead():
             return False
