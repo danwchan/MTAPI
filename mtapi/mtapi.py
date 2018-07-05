@@ -220,8 +220,8 @@ class Mtapi(object):
     '''
     custom function to get the next 2 trains in each direction sorted by time of arrival from:
     Court Square {65cd}, Queensboro Plaza {66ce}, Queens Plaza {ce5b}, Queensbridge {7da0}
-    (only trains ≥10min away for non-Court Square stations)
-    (only trains ≥3min away for G and 7 at Court Square)
+    (only trains >= 10min away for non-Court Square stations)
+    (only trains >= 3min away for G and 7 at Court Square)
     '''
     def get_custom(self):
         if self.is_expired():
